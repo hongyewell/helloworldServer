@@ -6,12 +6,21 @@ package com.hongyewell.pojo;
 * @createTime:2015年10月21日 下午8:44:56
 */
 public class DataItem {
+	private int myId;
 	private String myTitle;
 	private String myContent;
 	
-	public DataItem(String myTitle, String myContent) {
+	public DataItem( String myTitle, String myContent) {
 		this.myTitle = myTitle;
 		this.myContent = myContent;
+	}
+
+	public int getMyId() {
+		return myId;
+	}
+
+	public void setMyId(int myId) {
+		this.myId = myId;
 	}
 
 	public String getMyTitle() {
@@ -29,6 +38,4 @@ public class DataItem {
 	public void setMyContent(String myContent) {
 		this.myContent = myContent;
 	}
-	
-
 }
