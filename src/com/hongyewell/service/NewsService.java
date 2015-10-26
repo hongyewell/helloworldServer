@@ -43,5 +43,18 @@ public class NewsService {
 	public int addNews(DataItem dataItem){
 		return newsDao.addNews(dataItem);
 	}
+	
+	/**
+	 * 根据id查找信息详情
+	 *
+	 * @author: yeye
+	 * @createTime: 2015年10月26日 下午12:40:29
+	 * @history:
+	 * @param newsId
+	 * @return DataItem
+	 */
+	public DataItem queryNewsDetail(int newsId){
+		return newsDao.queryNewsDetail(newsId);
+	}
 
 }

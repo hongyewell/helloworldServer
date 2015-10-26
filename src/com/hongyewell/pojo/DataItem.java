@@ -12,7 +12,9 @@ public class DataItem {
 	private String myAuthor;
 	private String myTime;
 	
-	
+	public DataItem(){
+		
+	}
 	public DataItem(String myTitle, String myContent, String myAuthor, String myTime) {
 		this.myTitle = myTitle;
 		this.myContent = myContent;

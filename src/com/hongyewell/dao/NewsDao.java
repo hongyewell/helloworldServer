@@ -56,6 +56,15 @@ public class NewsDao {
 	}
 	
 	
+	/**
+	 * 添加一条信息
+	 *
+	 * @author: yeye
+	 * @createTime: 2015年10月26日 上午10:55:50
+	 * @history:
+	 * @param dataItem
+	 * @return int
+	 */
 	public int addNews(DataItem dataItem){
 		String sql = "insert into newsitem values (null,?,?,?,?)";
 		Connection conn = DBUtil.getConn();
@@ -78,6 +87,33 @@ public class NewsDao {
 		}
 		
 		return 0;
+		
+	}
+	
+	public DataItem queryNewsDetail(int newsId){
+		DataItem dataItem = new DataItem();
+		String sql = "select * from newsitem where newsId = ?";
+		Connection conn = DBUtil.getConn();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		pstmt = DBUtil.getPStmt(conn, sql);
+		
+		try {
+			pstmt.setInt(1, newsId);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				dataItem.setMyId(rs.getInt("newsId"));
+				dataItem.setMyTitle(rs.getString("newsTitle"));
+				dataItem.setMyContent(rs.getString("newsContent"));
+				dataItem.setMyAuthor(rs.getString("newsAuthor"));
+				dataItem.setMyTime(rs.getString("newsTime"));
+				return dataItem;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 		
 	}
 

@@ -39,4 +39,14 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewsDetail</display-name>
+    <servlet-name>NewsDetail</servlet-name>
+    <servlet-class>com.hongyewell.controller.NewsDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewsDetail</servlet-name>
+    <url-pattern>/NewsDetail</url-pattern>
+  </servlet-mapping>
 </web-app>
