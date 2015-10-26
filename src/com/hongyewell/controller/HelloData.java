@@ -2,7 +2,9 @@ package com.hongyewell.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -37,5 +39,11 @@ public class HelloData extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.write(mListGson);
 		System.out.println("get请求执行了....");
+		
+		/*Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String myDate = simpleDateFormat.format(date);
+		System.out.println(myDate);*/
+		
 	}
 }

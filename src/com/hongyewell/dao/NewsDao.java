@@ -28,7 +28,7 @@ public class NewsDao {
 	 */
 	public List<DataItem> queryAllNews(){
 		List<DataItem> newsList = new ArrayList<DataItem>();
-		String sql = "select * from newsitem";
+		String sql = "select * from newsitem order by newsTime Desc";
 		Connection conn = DBUtil.getConn();
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -38,7 +38,9 @@ public class NewsDao {
 			while(rs.next()){
 				String newsTitle = rs.getString("newsTitle");
 				String newsContent = rs.getString("newsContent");
-				DataItem dataItem = new DataItem(newsTitle, newsContent);
+				String newsAuthor = rs.getString("newsAuthor");
+				String newsTime = rs.getString("newsTime");
+				DataItem dataItem = new DataItem(newsTitle, newsContent, newsAuthor, newsTime);
 				newsList.add(dataItem);
 			}
 			return newsList;
@@ -55,7 +57,7 @@ public class NewsDao {
 	
 	
 	public int addNews(DataItem dataItem){
-		String sql = "insert into newsitem values (null,?,?)";
+		String sql = "insert into newsitem values (null,?,?,?,?)";
 		Connection conn = DBUtil.getConn();
 		PreparedStatement pstmt = null;
 		pstmt = DBUtil.getPStmt(conn, sql);
@@ -63,6 +65,8 @@ public class NewsDao {
 			int res = 0;
 			pstmt.setString(1, dataItem.getMyTitle());
 			pstmt.setString(2, dataItem.getMyContent());
+			pstmt.setString(3, dataItem.getMyAuthor());
+			pstmt.setString(4, dataItem.getMyTime());
 			res = pstmt.executeUpdate();
 			return res;
 			

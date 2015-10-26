@@ -21,7 +21,9 @@ public class PublishData extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		DataItem dataItem = new DataItem(title, content);
+		String  author = request.getParameter("author");
+		String time = request.getParameter("time");
+		DataItem dataItem = new DataItem(title, content, author, time);
 		NewsService newsService = new NewsService();
 		newsService.addNews(dataItem);
 		System.out.println("post请求执行了...我开始接收了");
