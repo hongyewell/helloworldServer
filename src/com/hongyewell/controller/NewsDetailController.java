@@ -16,11 +16,12 @@ import com.hongyewell.service.NewsService;
 public class NewsDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		NewsService newsService = new NewsService();
-		int  newsId = 16;
+		int  newsId = Integer.parseInt(request.getParameter("newsId"));
 		DataItem dataItem = newsService.queryNewsDetail(newsId);
+		response.setCharacterEncoding("utf-8");
 		Gson gson = new Gson();
 		String dataJson = gson.toJson(dataItem);
 		PrintWriter out = response.getWriter();

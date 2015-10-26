@@ -41,12 +41,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>NewsDetail</display-name>
-    <servlet-name>NewsDetail</servlet-name>
-    <servlet-class>com.hongyewell.controller.NewsDetail</servlet-class>
+    <display-name>NewsDetailController</display-name>
+    <servlet-name>NewsDetailController</servlet-name>
+    <servlet-class>com.hongyewell.controller.NewsDetailController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>NewsDetail</servlet-name>
-    <url-pattern>/NewsDetail</url-pattern>
+    <servlet-name>NewsDetailController</servlet-name>
+    <url-pattern>/NewsDetailController</url-pattern>
   </servlet-mapping>
 </web-app>

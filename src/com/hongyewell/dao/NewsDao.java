@@ -36,11 +36,12 @@ public class NewsDao {
 			pStmt = DBUtil.getPStmt(conn, sql);
 			rs = pStmt.executeQuery();
 			while(rs.next()){
+				int newsId = rs.getInt("newsId");
 				String newsTitle = rs.getString("newsTitle");
 				String newsContent = rs.getString("newsContent");
 				String newsAuthor = rs.getString("newsAuthor");
 				String newsTime = rs.getString("newsTime");
-				DataItem dataItem = new DataItem(newsTitle, newsContent, newsAuthor, newsTime);
+				DataItem dataItem = new DataItem(newsId,newsTitle, newsContent, newsAuthor, newsTime);
 				newsList.add(dataItem);
 			}
 			return newsList;

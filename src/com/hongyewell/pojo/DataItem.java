@@ -15,6 +15,16 @@ public class DataItem {
 	public DataItem(){
 		
 	}
+	
+	public DataItem(int myId, String myTitle, String myContent, String myAuthor, String myTime) {
+		super();
+		this.myId = myId;
+		this.myTitle = myTitle;
+		this.myContent = myContent;
+		this.myAuthor = myAuthor;
+		this.myTime = myTime;
+	}
+
 	public DataItem(String myTitle, String myContent, String myAuthor, String myTime) {
 		this.myTitle = myTitle;
 		this.myContent = myContent;

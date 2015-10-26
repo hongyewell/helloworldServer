@@ -34,6 +34,7 @@ public class HelloData extends HttpServlet {
 			DataItem item = new DataItem(i, "标题呀"+i, "内容呀"+i);
 			mList.add(item);
 		}*/
+		response.setCharacterEncoding("utf-8");
 		Gson gson = new Gson();
 		String mListGson = gson.toJson(mList);
 		PrintWriter out = response.getWriter();
