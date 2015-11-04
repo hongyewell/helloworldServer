@@ -17,13 +17,12 @@ import com.hongyewell.util.DBUtil;
 public class UsersDao {
 	
 	public User queryByUserNameAndPassword(String username, String password){
-		String sql = "select u.userName,u.userPassword from usersinfo u where u.userName =? and u.userPassword =?";
+		String sql = "select userName,userPassword from usersinfo "
+				+ "where userName =? and userPassword =?";
 		
 		Connection conn = DBUtil.getConn();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-
 		try {
 			pstmt = DBUtil.getPStmt(conn, sql);
 			pstmt.setString(1, username);

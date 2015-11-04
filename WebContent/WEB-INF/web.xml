@@ -2,12 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>helloworld</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -48,5 +43,35 @@
   <servlet-mapping>
     <servlet-name>NewsDetailController</servlet-name>
     <url-pattern>/NewsDetailController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RefreshData</display-name>
+    <servlet-name>RefreshData</servlet-name>
+    <servlet-class>com.hongyewell.controller.RefreshData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RefreshData</servlet-name>
+    <url-pattern>/RefreshData</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.hongyewell.controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HelloDataServlet</display-name>
+    <servlet-name>HelloDataServlet</servlet-name>
+    <servlet-class>com.hongyewell.controller.HelloDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloDataServlet</servlet-name>
+    <url-pattern>/HelloDataServlet</url-pattern>
   </servlet-mapping>
 </web-app>

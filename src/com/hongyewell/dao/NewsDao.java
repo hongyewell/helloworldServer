@@ -18,8 +18,39 @@ import com.hongyewell.util.DBUtil;
 */
 public class NewsDao {
 	
+	public List<DataItem> queryRefreshNews(int id){
+		List<DataItem> newsList = new ArrayList<DataItem>();
+		String sql = "select * from newsitem where newsId > ? order by newsTime Desc";
+		Connection conn = DBUtil.getConn();
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pStmt = DBUtil.getPStmt(conn, sql);
+			pStmt.setInt(1, id);
+			rs = pStmt.executeQuery();
+			while(rs.next()){
+				int newsId = rs.getInt("newsId");
+				String newsTitle = rs.getString("newsTitle");
+				String newsContent = rs.getString("newsContent");
+				String newsAuthor = rs.getString("newsAuthor");
+				String newsTime = rs.getString("newsTime");
+				DataItem dataItem = new DataItem(newsId,newsTitle, newsContent, newsAuthor, newsTime);
+				newsList.add(dataItem);
+			}
+			return newsList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.closeConn(conn);;
+			DBUtil.closeResultSet(rs);
+		}
+		return null;
+		
+	}
+	
 	/**
-	 * 获取一组新闻信息
+	 * 获取一组新闻信息，按时间降序排列
 	 *
 	 * @author: yeye
 	 * @createTime: 2015年10月23日 下午7:17:19
@@ -91,6 +122,15 @@ public class NewsDao {
 		
 	}
 	
+	/**
+	 * 根据id获取信息详情
+	 *
+	 * @author: yeye
+	 * @createTime: 2015年11月3日 下午3:34:11
+	 * @history:
+	 * @param newsId
+	 * @return DataItem
+	 */
 	public DataItem queryNewsDetail(int newsId){
 		DataItem dataItem = new DataItem();
 		String sql = "select * from newsitem where newsId = ?";

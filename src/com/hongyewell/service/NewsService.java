@@ -19,6 +19,18 @@ public class NewsService {
 	}
 	
 	/**
+	 * 获取最新的信息
+	 *
+	 * @author: yeye
+	 * @createTime: 2015年10月30日 上午10:12:13
+	 * @history:
+	 * @param id
+	 * @return List<DataItem>
+	 */
+	public List<DataItem> getRefreshNews(int id){
+		return newsDao.queryRefreshNews(id);
+	}
+	/**
 	 * 获取一组信息
 	 *
 	 * @author: yeye

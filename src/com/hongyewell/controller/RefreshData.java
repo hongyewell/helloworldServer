@@ -2,9 +2,7 @@ package com.hongyewell.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,26 +14,28 @@ import com.google.gson.Gson;
 import com.hongyewell.pojo.DataItem;
 import com.hongyewell.service.NewsService;
 
-public class HelloData extends HttpServlet {
+
+public class RefreshData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		/*request.setCharacterEncoding("utf-8");*/
-		
+		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		
-		List<DataItem> mList = new ArrayList<DataItem>();
+		String idStr = request.getParameter("id");
+		/*String idStr = "16";*/
+		int id = Integer.parseInt(idStr);
 		NewsService newsService = new NewsService();
-		mList = newsService.getAllNews();
-		/*response.setCharacterEncoding("utf-8");*/
+		List<DataItem> dataItems = new ArrayList<DataItem>();
+		dataItems =  newsService.getRefreshNews(id);
+		
 		Gson gson = new Gson();
-		String mListGson = gson.toJson(mList);
-		PrintWriter out = response.getWriter();
-		out.write(mListGson);
-		System.out.println("get请求执行了....");
-		
-		
+		String dataJson = gson.toJson(dataItems);
+		PrintWriter writer = response.getWriter();
+		writer.write(dataJson);
 	}
+
 }
